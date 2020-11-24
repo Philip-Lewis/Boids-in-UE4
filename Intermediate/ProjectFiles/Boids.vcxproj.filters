@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<None Include="..\..\Boids.uproject" />
+		<Filter Include="Source">
+			<UniqueIdentifier>{824C2793-B470-4156-B82E-AD334A3B3A34}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Source\Boids.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<None Include="..\..\Source\BoidsEditor.Target.cs">
+			<Filter>Source</Filter>
+		</None >
+		<Filter Include="Config">
+			<UniqueIdentifier>{6BD43656-460D-42F5-B077-BCD47ECBDE1F}</UniqueIdentifier>
+		</Filter>
+		<None Include="..\..\Config\DefaultEditor.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultEngine.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultGame.ini">
+			<Filter>Config</Filter>
+		</None >
+		<None Include="..\..\Config\DefaultInput.ini">
+			<Filter>Config</Filter>
+		</None >
+		<Filter Include="Source\Boids">
+			<UniqueIdentifier>{0063DEEA-C05F-46A5-8189-75F19CFA434D}</UniqueIdentifier>
+		</Filter>
+		<ClCompile Include="..\..\Source\Boids\Boid.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\Boid.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Boids\BoidManager.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\BoidManager.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Boids\BoidPlayerController.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\BoidPlayerController.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Boids\BoidPlayerPawn.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\BoidPlayerPawn.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+		<None Include="..\..\Source\Boids\Boids.Build.cs">
+			<Filter>Source\Boids</Filter>
+		</None >
+		<ClCompile Include="..\..\Source\Boids\Boids.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\Boids.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+		<ClCompile Include="..\..\Source\Boids\BoidsGameModeBase.cpp">
+			<Filter>Source\Boids</Filter>
+		</ClCompile >
+		<ClInclude Include="..\..\Source\Boids\BoidsGameModeBase.h">
+			<Filter>Source\Boids</Filter>
+		</ClInclude >
+	</ItemGroup>
+</Project>

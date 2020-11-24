@@ -1,0 +1,24 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Boids.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boid.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidManager.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerController.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerPawn.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boids.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidsGameModeBase.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boid.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidManager.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerController.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerPawn.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boids.init.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidsGameModeBase.gen.cpp.obj"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Boids\PCLaunch.rc.res"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-Boids.lib"

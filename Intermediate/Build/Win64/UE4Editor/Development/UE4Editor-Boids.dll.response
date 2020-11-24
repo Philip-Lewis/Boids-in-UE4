@@ -1,0 +1,75 @@
+/MANIFEST:NO
+/NOLOGO
+/DEBUG
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/FIXED:No
+/NXCOMPAT
+/STACK:5000000
+/DELAY:UNLOAD
+/DLL
+/PDBALTPATH:%_PDB%
+/OPT:NOREF
+/OPT:NOICF
+/INCREMENTAL:NO
+/ignore:4199
+/ignore:4099
+/DELAYLOAD:"d3d12.dll"
+/NODEFAULTLIB:"LIBCMT"
+/NODEFAULTLIB:"LIBCPMT"
+/NODEFAULTLIB:"LIBCMTD"
+/NODEFAULTLIB:"LIBCPMTD"
+/NODEFAULTLIB:"MSVCRTD"
+/NODEFAULTLIB:"MSVCPRTD"
+/NODEFAULTLIB:"LIBC"
+/NODEFAULTLIB:"LIBCP"
+/NODEFAULTLIB:"LIBCD"
+/NODEFAULTLIB:"LIBCPD"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boid.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidManager.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerController.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerPawn.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boids.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidsGameModeBase.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boid.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidManager.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerController.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidPlayerPawn.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\Boids.init.gen.cpp.obj"
+"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\Boids\BoidsGameModeBase.gen.cpp.obj"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\Boids\PCLaunch.rc.res"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+"delayimp.lib"
+"wininet.lib"
+"rpcrt4.lib"
+"ws2_32.lib"
+"dbghelp.lib"
+"comctl32.lib"
+"Winmm.lib"
+"kernel32.lib"
+"user32.lib"
+"gdi32.lib"
+"winspool.lib"
+"comdlg32.lib"
+"advapi32.lib"
+"shell32.lib"
+"ole32.lib"
+"oleaut32.lib"
+"uuid.lib"
+"odbc32.lib"
+"odbccp32.lib"
+"netapi32.lib"
+"iphlpapi.lib"
+"setupapi.lib"
+"dwmapi.lib"
+"imm32.lib"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-Engine.lib"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-CoreUObject.lib"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-Core.lib"
+"C:\Program Files\Epic Games\UE_4.18\Engine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-InputCore.lib"
+/OUT:"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Binaries\Win64\UE4Editor-Boids.dll"
+/IMPLIB:"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-Boids.suppressed.lib"
+/PDB:"C:\Users\Philip Lewis\Documents\Unreal Projects\Boids\Binaries\Win64\UE4Editor-Boids.pdb"
+/ignore:4078
