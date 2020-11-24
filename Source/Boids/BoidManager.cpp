@@ -16,10 +16,10 @@ void ABoidManager::BeginPlay()
 
 	if (Role == ROLE_Authority)
 	{
+		CurrentBoidIndex = 0;
+
 		for (uint8 i = 0; i < DefaultBoidCount; ++i)
 		{
-			uint8 mod = 5;
-
 			if (UWorld* World = GetWorld())
 			{
 				FVector SpawnLocation;
@@ -36,7 +36,7 @@ void ABoidManager::BeginPlay()
 					}
 					else
 					{
-						SpawnLocation = FVector(0.0f, 0.0f, 0.0f);
+						SpawnLocation = FVector::ZeroVector;
 					}
 				}
 				
@@ -67,7 +67,7 @@ void ABoidManager::UpdateBoids(float DeltaTime, ABoid* CurrentBoid)
 
 		FVector CohesionDirection = CalculateCohesionDirection(Neighbours, CurrentBoid);
 
-		FVector TravelDirection = FVector(0.0f, 0.0f, 0.0f);
+		FVector TravelDirection = FVector::ZeroVector;
 		if (bAreRulesAveraged)
 		{
 			//Find average direction of rules (assumes each rule is weighted the same) and then apply distance to travel
@@ -110,24 +110,15 @@ void ABoidManager::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (DeltaTimeSinceLastUpdate > DefaultUpdateDelay)
+	if (SpawnedBoids.Num() > 0)
 	{
-		if (SpawnedBoids.Num() > 0)
+		if (SpawnedBoids.IsValidIndex(CurrentBoidIndex))
 		{
-			if (SpawnedBoids.IsValidIndex(CurrentBoidIndex))
-			{
-				UpdateBoids(DeltaTimeSinceLastUpdate, SpawnedBoids[CurrentBoidIndex]);
-			}
-			
-			CurrentBoidIndex = (CurrentBoidIndex + 1) % SpawnedBoids.Num();
+			UpdateBoids(DeltaTime, SpawnedBoids[CurrentBoidIndex]);
 		}
-
-		DeltaTimeSinceLastUpdate = 0.0f;
+		
+		CurrentBoidIndex = (CurrentBoidIndex + 1) % SpawnedBoids.Num();
 	}
-	else
-	{
-		DeltaTimeSinceLastUpdate += DeltaTime;
-	}	
 }
 
 TArray<ABoid*> ABoidManager::FindNeighbours(ABoid* FocusBoid)
@@ -138,11 +129,9 @@ TArray<ABoid*> ABoidManager::FindNeighbours(ABoid* FocusBoid)
 	{
 		if (SpawnedBoids[i] != FocusBoid)
 		{
-			FVector distanceBetweenBoids = SpawnedBoids[i]->GetActorLocation() - FocusBoid->GetActorLocation();
+			float radiusBetweenBoids = FVector::DistSquared(SpawnedBoids[i]->GetActorLocation(), FocusBoid->GetActorLocation());
 
-			float radiusBetweenBoids = FMath::Sqrt((distanceBetweenBoids.X * distanceBetweenBoids.X) + (distanceBetweenBoids.Y * distanceBetweenBoids.Y));
-
-			if(radiusBetweenBoids <= DefaultAwarenessRadius)
+			if(radiusBetweenBoids <= FMath::Square(DefaultAwarenessRadius))
 			{
 				Neighbours.Add(SpawnedBoids[i]);
 			}
@@ -154,9 +143,9 @@ TArray<ABoid*> ABoidManager::FindNeighbours(ABoid* FocusBoid)
 
 FVector ABoidManager::CalculateSeperationDirection(TArray<ABoid*> Neighbours, ABoid* FocusBoid)
 {
-	FVector NeighbourLocation = FVector(0.0f, 0.0f, 0.0f);
-	FVector distance = FVector(0.0f, 0.0f, 0.0f);
-	FVector direction = FVector(0.0f, 0.0f, 0.0f);
+	FVector NeighbourLocation = FVector::ZeroVector;
+	FVector distance = FVector::ZeroVector;
+	FVector direction = FVector::ZeroVector;
 	float magnitude = 0.0f;
 
 	for (uint8 i = 0; i < Neighbours.Num(); ++i)
@@ -185,8 +174,8 @@ FVector ABoidManager::CalculateSeperationDirection(TArray<ABoid*> Neighbours, AB
 
 FVector ABoidManager::CalculateAlignmentDirection(TArray<ABoid*> Neighbours)
 {
-	FVector distance = FVector(0.0f, 0.0f, 0.0f);
-	FVector direction = FVector(0.0f, 0.0f, 0.0f);
+	FVector distance = FVector::ZeroVector;
+	FVector direction = FVector::ZeroVector; 
 	float magnitude = 0.0f;
 
 	for (uint8 i = 0; i < Neighbours.Num(); ++i)
@@ -208,12 +197,12 @@ FVector ABoidManager::CalculateAlignmentDirection(TArray<ABoid*> Neighbours)
 
 FVector ABoidManager::CalculateCohesionDirection(TArray<ABoid*> Neighbours, ABoid* FocusBoid)
 {
-	FVector distance = FVector(0.0f, 0.0f, 0.0f);
-	FVector direction = FVector(0.0f, 0.0f, 0.0f);
+	FVector distance = FVector::ZeroVector;
+	FVector direction = FVector::ZeroVector;
 	float magnitude = 0.0f;
-	FVector AverageNeighbourPostion = FVector(0.0f, 0.0f, 0.0f);
+	FVector AverageNeighbourPostion = FVector::ZeroVector;
 
-	FVector CombinedNeighbourPostion = FVector(0.0f, 0.0f, 0.0f);
+	FVector CombinedNeighbourPostion = FVector::ZeroVector;
 	for (uint8 i = 0; i < Neighbours.Num(); ++i)
 	{
 		CombinedNeighbourPostion.X += Neighbours[i]->GetActorLocation().X;

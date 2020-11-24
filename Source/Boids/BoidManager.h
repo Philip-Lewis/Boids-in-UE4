@@ -36,16 +36,10 @@ class BOIDS_API ABoidManager : public AActor
 		float DefaultBoidSpeed;
 
 		UPROPERTY(EditInstanceOnly)
-		float DefaultUpdateDelay;
-
-		UPROPERTY(EditInstanceOnly)
 		float DefaultAwarenessRadius;
 
 		UPROPERTY(EditInstanceOnly)
 		bool bAreRulesAveraged;
-
-		UPROPERTY(VisibleDefaultsOnly)
-		float DeltaTimeSinceLastUpdate;
 
 		UPROPERTY(VisibleDefaultsOnly)
 		uint8 CurrentBoidIndex;

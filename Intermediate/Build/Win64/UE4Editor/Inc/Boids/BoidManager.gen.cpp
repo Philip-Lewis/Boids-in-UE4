@@ -82,13 +82,6 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 #endif
 			static const UE4CodeGen_Private::FBytePropertyParams NewProp_CurrentBoidIndex = { UE4CodeGen_Private::EPropertyClass::Byte, "CurrentBoidIndex", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000030001, 1, nullptr, STRUCT_OFFSET(ABoidManager, CurrentBoidIndex), nullptr, METADATA_PARAMS(NewProp_CurrentBoidIndex_MetaData, ARRAY_COUNT(NewProp_CurrentBoidIndex_MetaData)) };
 #if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DeltaTimeSinceLastUpdate_MetaData[] = {
-				{ "Category", "BoidManager" },
-				{ "ModuleRelativePath", "BoidManager.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_DeltaTimeSinceLastUpdate = { UE4CodeGen_Private::EPropertyClass::Float, "DeltaTimeSinceLastUpdate", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000030001, 1, nullptr, STRUCT_OFFSET(ABoidManager, DeltaTimeSinceLastUpdate), METADATA_PARAMS(NewProp_DeltaTimeSinceLastUpdate_MetaData, ARRAY_COUNT(NewProp_DeltaTimeSinceLastUpdate_MetaData)) };
-#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_bAreRulesAveraged_MetaData[] = {
 				{ "Category", "BoidManager" },
 				{ "ModuleRelativePath", "BoidManager.h" },
@@ -103,13 +96,6 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 			};
 #endif
 			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_DefaultAwarenessRadius = { UE4CodeGen_Private::EPropertyClass::Float, "DefaultAwarenessRadius", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000801, 1, nullptr, STRUCT_OFFSET(ABoidManager, DefaultAwarenessRadius), METADATA_PARAMS(NewProp_DefaultAwarenessRadius_MetaData, ARRAY_COUNT(NewProp_DefaultAwarenessRadius_MetaData)) };
-#if WITH_METADATA
-			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultUpdateDelay_MetaData[] = {
-				{ "Category", "BoidManager" },
-				{ "ModuleRelativePath", "BoidManager.h" },
-			};
-#endif
-			static const UE4CodeGen_Private::FFloatPropertyParams NewProp_DefaultUpdateDelay = { UE4CodeGen_Private::EPropertyClass::Float, "DefaultUpdateDelay", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000000801, 1, nullptr, STRUCT_OFFSET(ABoidManager, DefaultUpdateDelay), METADATA_PARAMS(NewProp_DefaultUpdateDelay_MetaData, ARRAY_COUNT(NewProp_DefaultUpdateDelay_MetaData)) };
 #if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DefaultBoidSpeed_MetaData[] = {
 				{ "Category", "BoidManager" },
@@ -132,10 +118,8 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BoidClass,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AverageBoidDirection,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CurrentBoidIndex,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DeltaTimeSinceLastUpdate,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_bAreRulesAveraged,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DefaultAwarenessRadius,
-				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DefaultUpdateDelay,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DefaultBoidSpeed,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DefaultBoidCount,
 			};
@@ -157,7 +141,7 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABoidManager, 1943657611);
+	IMPLEMENT_CLASS(ABoidManager, 3476677779);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABoidManager(Z_Construct_UClass_ABoidManager, &ABoidManager::StaticClass, TEXT("/Script/Boids"), TEXT("ABoidManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABoidManager);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
