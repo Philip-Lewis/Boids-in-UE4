@@ -19,7 +19,7 @@ class BOIDS_API ABoidManager : public AActor
 
 		void BeginPlay();
 		
-		void UpdateBoids(float DeltaTime);
+		void UpdateBoids(float DeltaTime, ABoid* CurrentBoid);
 
 		TArray<ABoid*> FindNeighbours(ABoid* FocusBoid);
 
@@ -46,6 +46,9 @@ class BOIDS_API ABoidManager : public AActor
 
 		UPROPERTY(VisibleDefaultsOnly)
 		float DeltaTimeSinceLastUpdate;
+
+		UPROPERTY(VisibleDefaultsOnly)
+		uint8 CurrentBoidIndex;
 
 		UPROPERTY(VisibleDefaultsOnly)
 		FVector AverageBoidDirection;

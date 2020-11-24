@@ -75,6 +75,13 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 #endif
 			static const UE4CodeGen_Private::FStructPropertyParams NewProp_AverageBoidDirection = { UE4CodeGen_Private::EPropertyClass::Struct, "AverageBoidDirection", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000030001, 1, nullptr, STRUCT_OFFSET(ABoidManager, AverageBoidDirection), Z_Construct_UScriptStruct_FVector, METADATA_PARAMS(NewProp_AverageBoidDirection_MetaData, ARRAY_COUNT(NewProp_AverageBoidDirection_MetaData)) };
 #if WITH_METADATA
+			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_CurrentBoidIndex_MetaData[] = {
+				{ "Category", "BoidManager" },
+				{ "ModuleRelativePath", "BoidManager.h" },
+			};
+#endif
+			static const UE4CodeGen_Private::FBytePropertyParams NewProp_CurrentBoidIndex = { UE4CodeGen_Private::EPropertyClass::Byte, "CurrentBoidIndex", RF_Public|RF_Transient|RF_MarkAsNative, 0x0010000000030001, 1, nullptr, STRUCT_OFFSET(ABoidManager, CurrentBoidIndex), nullptr, METADATA_PARAMS(NewProp_CurrentBoidIndex_MetaData, ARRAY_COUNT(NewProp_CurrentBoidIndex_MetaData)) };
+#if WITH_METADATA
 			static const UE4CodeGen_Private::FMetaDataPairParam NewProp_DeltaTimeSinceLastUpdate_MetaData[] = {
 				{ "Category", "BoidManager" },
 				{ "ModuleRelativePath", "BoidManager.h" },
@@ -124,6 +131,7 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_SpawnedBoids_Inner,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_BoidClass,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_AverageBoidDirection,
+				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_CurrentBoidIndex,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DeltaTimeSinceLastUpdate,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_bAreRulesAveraged,
 				(const UE4CodeGen_Private::FPropertyParamsBase*)&NewProp_DefaultAwarenessRadius,
@@ -149,7 +157,7 @@ void EmptyLinkFunctionForGeneratedCodeBoidManager() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(ABoidManager, 3121299654);
+	IMPLEMENT_CLASS(ABoidManager, 1943657611);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_ABoidManager(Z_Construct_UClass_ABoidManager, &ABoidManager::StaticClass, TEXT("/Script/Boids"), TEXT("ABoidManager"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(ABoidManager);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

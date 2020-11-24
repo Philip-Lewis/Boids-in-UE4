@@ -52,62 +52,57 @@ void ABoidManager::BeginPlay()
 	}
 }
 
-void ABoidManager::UpdateBoids(float DeltaTime)
+void ABoidManager::UpdateBoids(float DeltaTime, ABoid* CurrentBoid)
 {
 	if (Role == ROLE_Authority)
 	{
 		float DistanceToTravel = DeltaTime * DefaultBoidSpeed;
 
-		for (uint8 i = 0; i < SpawnedBoids.Num(); ++i)
+		TArray<ABoid*> Neighbours = FindNeighbours(CurrentBoid);
+
+		//Calculate directions for each rule
+		FVector SeperationDirection = CalculateSeperationDirection(Neighbours, CurrentBoid);
+
+		FVector AlignmentDirection = CalculateAlignmentDirection(Neighbours);
+
+		FVector CohesionDirection = CalculateCohesionDirection(Neighbours, CurrentBoid);
+
+		FVector TravelDirection = FVector(0.0f, 0.0f, 0.0f);
+		if (bAreRulesAveraged)
 		{
-			TArray<ABoid*> Neighbours = FindNeighbours(SpawnedBoids[i]);
-
-			//Calculate directions for each rule
-			FVector SeperationDirection = CalculateSeperationDirection(Neighbours, SpawnedBoids[i]);
-
-			FVector AlignmentDirection = CalculateAlignmentDirection(Neighbours);
-
-			FVector CohesionDirection = CalculateCohesionDirection(Neighbours, SpawnedBoids[i]);
-
-			FVector TravelDirection = FVector(0.0f, 0.0f, 0.0f);
-			if (bAreRulesAveraged)
-			{
-				//Find average direction of rules (assumes each rule is weighted the same) and then apply distance to travel
-				TravelDirection.X = (((SeperationDirection.X + AlignmentDirection.X + CohesionDirection.X) / 3) * DistanceToTravel);
-				TravelDirection.Y = (((SeperationDirection.Y + AlignmentDirection.Y + CohesionDirection.Y) / 3) * DistanceToTravel);
-				TravelDirection.Z = (((SeperationDirection.Z + AlignmentDirection.Z + CohesionDirection.Z) / 3) * DistanceToTravel);
-			}
-			else
-			{
-				//apply each rule one at a time
-				TravelDirection.X += (SeperationDirection.X * DistanceToTravel);
-				TravelDirection.Y += (SeperationDirection.Y * DistanceToTravel);
-				TravelDirection.Z += (SeperationDirection.Z * DistanceToTravel);
-
-				TravelDirection.X += (AlignmentDirection.X * DistanceToTravel);
-				TravelDirection.Y += (AlignmentDirection.Y * DistanceToTravel);
-				TravelDirection.Z += (AlignmentDirection.Z * DistanceToTravel);
-
-				TravelDirection.X += (CohesionDirection.X * DistanceToTravel);
-				TravelDirection.Y += (CohesionDirection.Y * DistanceToTravel);
-				TravelDirection.Z += (CohesionDirection.Z * DistanceToTravel);
-			}
-
-			//Preserve location before moving for use with alignment then move Boid
-			FVector BoidCurrentLocation = SpawnedBoids[i]->GetActorLocation();
-
-			SpawnedBoids[i]->SetPreviousLocation(BoidCurrentLocation);
-
-			FVector* BoidNewLocation = new FVector(BoidCurrentLocation.X + TravelDirection.X, BoidCurrentLocation.Y + TravelDirection.Y, BoidCurrentLocation.Z + TravelDirection.Z);
-
-			FHitResult* SweepResult = new FHitResult();
-
-			SpawnedBoids[i]->SetActorLocation(*BoidNewLocation, false, SweepResult, ETeleportType::None);
-
-			FHitResult* RotationSweepResult = new FHitResult();
-
-			SpawnedBoids[i]->GetRootComponent()->SetWorldRotation(TravelDirection.ToOrientationRotator(), false, RotationSweepResult, ETeleportType::None);
+			//Find average direction of rules (assumes each rule is weighted the same) and then apply distance to travel
+			TravelDirection.X = (((SeperationDirection.X + AlignmentDirection.X + CohesionDirection.X) / 3) * DistanceToTravel);
+			TravelDirection.Y = (((SeperationDirection.Y + AlignmentDirection.Y + CohesionDirection.Y) / 3) * DistanceToTravel);
+			TravelDirection.Z = (((SeperationDirection.Z + AlignmentDirection.Z + CohesionDirection.Z) / 3) * DistanceToTravel);
 		}
+		else
+		{
+			//apply each rule one at a time
+			TravelDirection.X += (SeperationDirection.X * DistanceToTravel);
+			TravelDirection.Y += (SeperationDirection.Y * DistanceToTravel);
+			TravelDirection.Z += (SeperationDirection.Z * DistanceToTravel);
+
+			TravelDirection.X += (AlignmentDirection.X * DistanceToTravel);
+			TravelDirection.Y += (AlignmentDirection.Y * DistanceToTravel);
+			TravelDirection.Z += (AlignmentDirection.Z * DistanceToTravel);
+
+			TravelDirection.X += (CohesionDirection.X * DistanceToTravel);
+			TravelDirection.Y += (CohesionDirection.Y * DistanceToTravel);
+			TravelDirection.Z += (CohesionDirection.Z * DistanceToTravel);
+		}
+
+		//Preserve location before moving for use with alignment then move Boid
+		FVector BoidCurrentLocation = CurrentBoid->GetActorLocation();
+
+		CurrentBoid->SetPreviousLocation(BoidCurrentLocation);
+
+		FVector* BoidNewLocation = new FVector(BoidCurrentLocation.X + TravelDirection.X, BoidCurrentLocation.Y + TravelDirection.Y, BoidCurrentLocation.Z + TravelDirection.Z);
+
+		FHitResult* SweepResult = new FHitResult();
+
+		CurrentBoid->SetActorLocation(*BoidNewLocation, false, SweepResult, ETeleportType::None);
+
+		CurrentBoid->SetActorRotation(TravelDirection.ToOrientationRotator(), ETeleportType::None);
 	}
 }
 
@@ -117,7 +112,15 @@ void ABoidManager::Tick(float DeltaTime)
 
 	if (DeltaTimeSinceLastUpdate > DefaultUpdateDelay)
 	{
-		UpdateBoids(DeltaTimeSinceLastUpdate);
+		if (SpawnedBoids.Num() > 0)
+		{
+			if (SpawnedBoids.IsValidIndex(CurrentBoidIndex))
+			{
+				UpdateBoids(DeltaTimeSinceLastUpdate, SpawnedBoids[CurrentBoidIndex]);
+			}
+			
+			CurrentBoidIndex = (CurrentBoidIndex + 1) % SpawnedBoids.Num();
+		}
 
 		DeltaTimeSinceLastUpdate = 0.0f;
 	}
